@@ -11,7 +11,7 @@ You can use any of the following:
 
 * `ocf/debian:wheezy`
 * `ocf/debian:jessie` (aka `ocf/debian`)
-* `ocf/debian:squeeze`
+* `ocf/debian:stretch`
 * `ocf/debian:sid`
 
 For example, `docker run -ti ocf/debian bash`.

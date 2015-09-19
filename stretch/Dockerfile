@@ -1,4 +1,4 @@
-FROM debian:squeeze
+FROM debian:stretch
 
 # use mirrrors.ocf.berkeley.edu
 RUN sed -i 's/httpredir\.debian\.org/mirrors.ocf.berkeley.edu/g' /etc/apt/sources.list
