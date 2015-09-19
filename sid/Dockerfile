@@ -1,10 +1,10 @@
 FROM debian:sid
 
-# use mirrrors.ocf.berkeley.edu
+
 RUN sed -i 's/httpredir\.debian\.org/mirrors.ocf.berkeley.edu/g' /etc/apt/sources.list
 RUN sed -i 's/security\.debian\.org/mirrors.ocf.berkeley.edu\/debian-security/g' /etc/apt/sources.list
 
-# add deb-src entries
+
 RUN sed 's/^deb /deb-src /' /etc/apt/sources.list >> /etc/apt/sources.list
 
 RUN DEBIAN_FRONTEND=noninteractive \

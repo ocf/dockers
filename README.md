@@ -9,12 +9,12 @@ hosted on [Docker Hub](https://hub.docker.com/r/theocf/debian/).
 
 You can use any of the following:
 
-* `ocf/debian:wheezy`
-* `ocf/debian:jessie` (aka `ocf/debian`)
-* `ocf/debian:stretch`
-* `ocf/debian:sid`
+* `theocf/debian:wheezy`
+* `theocf/debian:jessie` (aka `theocf/debian`)
+* `theocf/debian:stretch`
+* `theocf/debian:sid`
 
-For example, `docker run -ti ocf/debian bash`.
+For example, `docker run -ti theocf/debian bash`.
 
 
 ## Making changes
