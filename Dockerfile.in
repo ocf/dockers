@@ -1,6 +1,6 @@
 FROM debian:{tag}
 
-# use mirrrors.ocf.berkeley.edu
+# use mirrors.ocf.berkeley.edu
 RUN sed -i 's/httpredir\.debian\.org/mirrors.ocf.berkeley.edu/g' /etc/apt/sources.list
 RUN sed -i 's/security\.debian\.org/mirrors.ocf.berkeley.edu\/debian-security/g' /etc/apt/sources.list
 
