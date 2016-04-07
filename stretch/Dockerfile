@@ -36,7 +36,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install --no-instal
 # add ocf apt repo
 RUN if [ "stretch" = "jessie" ]; then \
         curl https://apt.ocf.berkeley.edu/pubkey.gpg | apt-key add - \
-        && echo 'deb http://apt/ stretch main' >> /etc/apt/sources.list; \
+        && echo 'deb http://apt.ocf.berkeley.edu/ stretch main' >> /etc/apt/sources.list; \
     fi
 
 # add deb-src entries
