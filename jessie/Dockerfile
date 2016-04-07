@@ -7,9 +7,6 @@ FROM debian:jessie
 RUN sed -i 's/httpredir\.debian\.org/mirrors.ocf.berkeley.edu/g' /etc/apt/sources.list
 RUN sed -i 's/security\.debian\.org/mirrors.ocf.berkeley.edu\/debian-security/g' /etc/apt/sources.list
 
-# add deb-src entries
-RUN sed 's/^deb /deb-src /' /etc/apt/sources.list >> /etc/apt/sources.list
-
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get update && \
     apt-get install -y \
@@ -36,3 +33,11 @@ RUN DEBIAN_FRONTEND=noninteractive \
         wget \
         zip \
         zsh
+
+# add ocf apt repo
+RUN [ "jessie" = "jessie" ] && \
+    curl https://apt.ocf.berkeley.edu/pubkey.gpg | apt-key add - && \
+    echo 'deb http://apt/ jessie main' >> /etc/apt/sources.list
+
+# add deb-src entries
+RUN sed 's/^deb /deb-src /' /etc/apt/sources.list >> /etc/apt/sources.list
