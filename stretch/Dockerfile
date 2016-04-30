@@ -11,6 +11,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install --no-instal
             build-essential \
             curl \
             devscripts \
+            dumb-init \
             equivs \
             git \
             htop \
