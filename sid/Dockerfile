@@ -24,7 +24,6 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install --no-instal
             python3-dev \
             python3-pip \
             python3-virtualenv \
-            screen \
             sudo \
             tmux \
             unzip \
