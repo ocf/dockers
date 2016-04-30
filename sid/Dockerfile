@@ -33,11 +33,6 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install --no-instal
             zsh \
         && rm -rf /var/lib/apt/lists/*
 
-# add ocf apt repo
-RUN if [ "sid" = "jessie" ]; then \
-        curl https://apt.ocf.berkeley.edu/pubkey.gpg | apt-key add - \
-        && echo 'deb http://apt.ocf.berkeley.edu/ sid main' >> /etc/apt/sources.list; \
-    fi
 
 # add deb-src entries
 RUN sed 's/^deb /deb-src /' /etc/apt/sources.list >> /etc/apt/sources.list
