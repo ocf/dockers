@@ -4,32 +4,14 @@
 FROM debian:stretch
 
 # use mirrors.ocf.berkeley.edu
-RUN sed -i 's/httpredir\.debian\.org/mirrors.ocf.berkeley.edu/g' /etc/apt/sources.list
-RUN sed -i 's/security\.debian\.org/mirrors.ocf.berkeley.edu\/debian-security/g' /etc/apt/sources.list
+RUN sed -i 's|httpredir\.debian\.org|mirrors.ocf.berkeley.edu|g; \
+        s|security\.debian\.org|mirrors.ocf.berkeley.edu/debian-security|g' \
+        /etc/apt/sources.list
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
-            build-essential \
+            ca-certificates \
             curl \
-            devscripts \
-            dumb-init \
-            equivs \
-            git \
-            htop \
-            net-tools \
-            pv \
-            pwgen \
-            python-dev \
-            python-pip \
-            python-virtualenv \
-            python3-dev \
-            python3-pip \
-            python3-virtualenv \
-            sudo \
-            tmux \
-            unzip \
-            vim \
-            wget \
-            zip \
+            vim-tiny \
             zsh \
         && rm -rf /var/lib/apt/lists/*
 
