@@ -9,7 +9,6 @@ hosted on [Docker Hub](https://hub.docker.com/r/theocf/debian/).
 
 You can use any of the following:
 
-* `theocf/debian:wheezy`
 * `theocf/debian:jessie` (aka `theocf/debian`)
 * `theocf/debian:stretch`
 * `theocf/debian:sid`
@@ -20,4 +19,4 @@ For example, `docker run -ti theocf/debian bash`.
 ## Making changes
 
 Modify `Dockerfile.in` (never the individual Dockerfiles), then run `make
-Dockerfiles`, commit, and push.
+build`, commit, and push.
