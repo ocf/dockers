@@ -31,4 +31,9 @@ RUN curl https://apt.ocf.berkeley.edu/pubkey.gpg | apt-key add - && \
 # add deb-src entries
 RUN sed 's/^deb /deb-src /' /etc/apt/sources.list >> /etc/apt/sources.list
 
+{% if ldap %}
+COPY libnss-ldap.conf /etc/
+COPY nsswitch.conf /etc/
+{% endif %}
+
 # vim: ft=jinja

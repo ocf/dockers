@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import re
+import shutil
 from pathlib import Path
 
 from jinja2 import Environment
@@ -15,7 +16,9 @@ DEFAULT_IMAGE_OPTIONS = {
         'net-tools',
         'sudo',
         'vim-tiny',
+        'libnss-ldap',
     },
+    'ldap': True,
 }
 
 IMAGES = {
@@ -39,9 +42,9 @@ if __name__ == '__main__':
     for tag, params in IMAGES.items():
         assert re.match(r'^[a-z\-:]+$', tag), tag
         p = Path(tag)
-        try:
-            p.mkdir()
-        except FileExistsError:
-            pass
+        if p.is_dir():
+            shutil.rmtree(str(p))
+
+        shutil.copytree('include', str(p))
         with (p / 'Dockerfile').open('w') as f:
             f.write(template.render(**dict(DEFAULT_IMAGE_OPTIONS, **params)) + '\n')

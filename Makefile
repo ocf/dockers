@@ -8,5 +8,5 @@ test: build
 
 .PHONY: clean
 clean:
-	find . -mindepth 1 -maxdepth 1 -type d ! -name '.git*' -print0 | \
+	find . -mindepth 1 -maxdepth 1 -type d ! -name include ! -name '.git*' -print0 | \
 	xargs -0 rm -r

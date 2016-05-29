@@ -9,7 +9,7 @@ RUN sed -i 's|httpredir\.debian\.org|mirrors.ocf.berkeley.edu|g; \
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y \
     && DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
-         ca-certificates  curl  htop  net-tools  sudo  vim-tiny  \
+         ca-certificates  curl  htop  libnss-ldap  net-tools  sudo  vim-tiny  \
     && rm -rf /var/lib/apt/lists/*
 
 
@@ -26,5 +26,10 @@ ENTRYPOINT ["/usr/bin/dumb-init", "-c", "--"]
 
 # add deb-src entries
 RUN sed 's/^deb /deb-src /' /etc/apt/sources.list >> /etc/apt/sources.list
+
+
+COPY libnss-ldap.conf /etc/
+COPY nsswitch.conf /etc/
+
 
 # vim: ft=jinja

@@ -2,7 +2,7 @@
 # Make sure the Docker images can build and execute a simple command.
 set -o pipefail
 
-find . -mindepth 1 -maxdepth 1 -type d ! -name '.git*' |
+find . -mindepth 1 -maxdepth 1 -type d ! -name 'include' ! -name '.git*' |
     while read d; do
         tag="${USER}-docker-${d}"
         echo "Testing ${d} with tag ${tag}:"
