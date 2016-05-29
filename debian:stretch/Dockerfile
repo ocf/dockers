@@ -32,4 +32,6 @@ COPY libnss-ldap.conf /etc/
 COPY nsswitch.conf /etc/
 
 
+CMD ["/bin/bash"]
+
 # vim: ft=jinja

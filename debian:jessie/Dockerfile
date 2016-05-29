@@ -25,7 +25,8 @@ ENTRYPOINT ["/usr/bin/dumb-init", "-c", "--"]
 
 # add ocf apt repo
 RUN curl https://apt.ocf.berkeley.edu/pubkey.gpg | apt-key add - && \
-    echo 'deb http://apt/ jessie main' >> /etc/apt/sources.list
+    echo 'deb http://apt.ocf.berkeley.edu/ jessie main' \
+      >> /etc/apt/sources.list
 
 
 # add deb-src entries
@@ -35,5 +36,7 @@ RUN sed 's/^deb /deb-src /' /etc/apt/sources.list >> /etc/apt/sources.list
 COPY libnss-ldap.conf /etc/
 COPY nsswitch.conf /etc/
 
+
+CMD ["/bin/bash"]
 
 # vim: ft=jinja
