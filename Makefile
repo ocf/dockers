@@ -2,9 +2,9 @@
 build:
 	./template.py
 
-.PHONY: test
-test: build
-	./test.sh
+.PHONY: push
+push:
+	./template.py --push
 
 .PHONY: clean
 clean:
