@@ -1,32 +1,28 @@
-FROM {{base}}
+FROM debian:stretch
 
 # use mirrors.ocf.berkeley.edu
 RUN sed -i 's|httpredir\.debian\.org|mirrors.ocf.berkeley.edu|g; \
         s|security\.debian\.org|mirrors.ocf.berkeley.edu/debian-security|g' \
         /etc/apt/sources.list
 
-{% if packages %}
+
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y \
     && DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
-        {% for package in packages|sort %} {{package}} {% endfor %} \
+         ca-certificates  curl  htop  net-tools  sudo  vim-tiny  \
     && rm -rf /var/lib/apt/lists/*
-{% endif %}
 
-{% if dumb_init_version %}
+
+
 RUN curl -sLo /tmp/dumb-init.deb \
-        https://github.com/Yelp/dumb-init/releases/download/v{{dumb_init_version}}/dumb-init_{{dumb_init_version}}_amd64.deb \
+        https://github.com/Yelp/dumb-init/releases/download/v1.0.2/dumb-init_1.0.2_amd64.deb \
     && dpkg -i /tmp/dumb-init.deb \
     && rm /tmp/dumb-init.deb \
     && apt-get clean
 ENTRYPOINT ["/usr/bin/dumb-init", "-c", "--"]
-{% endif %}
 
-{% if ocf_apt_repo_dist %}
-# add ocf apt repo
-RUN curl https://apt.ocf.berkeley.edu/pubkey.gpg | apt-key add - && \
-    echo 'deb http://apt/ {{ocf_apt_repo_dist}} main' >> /etc/apt/sources.list
-{% endif %}
+
+
 
 # add deb-src entries
 RUN sed 's/^deb /deb-src /' /etc/apt/sources.list >> /etc/apt/sources.list
