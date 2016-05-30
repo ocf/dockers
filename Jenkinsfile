@@ -23,8 +23,10 @@ node('slave') {
 // deploy to prod
 if (env.BRANCH_NAME == 'master') {
     stage name: 'build-without-cache-and-push-images'
-    dir('src') {
-        sh 'make push'
+    node('deploy') {
+        dir('src') {
+            sh 'make push'
+        }
     }
 }
 
