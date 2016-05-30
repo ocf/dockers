@@ -24,6 +24,7 @@ node('slave') {
 if (env.BRANCH_NAME == 'master') {
     stage name: 'build-without-cache-and-push-images'
     node('deploy') {
+        unstash 'src'
         dir('src') {
             sh 'make push'
         }
