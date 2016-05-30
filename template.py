@@ -27,11 +27,13 @@ DEFAULT_IMAGE_OPTIONS = {
         'less',
         'libnss-ldap',
         'net-tools',
+        'ssmtp',
         'sudo',
         'vim-tiny',
     },
     'ldap': True,
     'kerberos': True,
+    'mail': True,
 }
 
 IMAGES = {
