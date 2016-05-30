@@ -36,6 +36,9 @@ RUN sed 's/^deb /deb-src /' /etc/apt/sources.list >> /etc/apt/sources.list
 COPY libnss-ldap.conf /etc/
 COPY nsswitch.conf /etc/
 {% endif %}
+{% if kerberos %}
+COPY krb5.conf /etc/
+{% endif %}
 
 COPY incommon-intermediate.crt /etc/ssl/certs/
 

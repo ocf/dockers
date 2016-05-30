@@ -22,13 +22,15 @@ DEFAULT_IMAGE_OPTIONS = {
     'packages': {
         'ca-certificates',
         'curl',
+        'heimdal-clients',
         'htop',
+        'libnss-ldap',
         'net-tools',
         'sudo',
         'vim-tiny',
-        'libnss-ldap',
     },
     'ldap': True,
+    'kerberos': True,
 }
 
 IMAGES = {
