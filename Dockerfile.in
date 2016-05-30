@@ -37,6 +37,8 @@ COPY libnss-ldap.conf /etc/
 COPY nsswitch.conf /etc/
 {% endif %}
 
+COPY incommon-intermediate.crt /etc/ssl/certs/
+
 CMD ["/bin/bash"]
 
 # vim: ft=jinja
