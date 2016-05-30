@@ -24,6 +24,7 @@ DEFAULT_IMAGE_OPTIONS = {
         'curl',
         'heimdal-clients',
         'htop',
+        'less',
         'libnss-ldap',
         'net-tools',
         'sudo',
