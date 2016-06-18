@@ -67,10 +67,14 @@ if __name__ == '__main__':
     env = Environment(loader=FileSystemLoader('.'))
     template = env.get_template('Dockerfile.in')
 
+    build = Path('build')
+    if not build.is_dir():
+        build.mkdir()
+
     for tag, params in IMAGES.items():
         report('Templating out {}'.format(tag))
         assert re.match(r'^[a-z\-:]+$', tag), tag
-        p = Path(tag)
+        p = build / tag
         if p.is_dir():
             shutil.rmtree(str(p))
 
@@ -91,7 +95,7 @@ if __name__ == '__main__':
         )
 
         if args.push:
-            for new_tag in ('theocf/{}', 'docker.ocf.berkeley.edu/theocf/{}'):
+            for new_tag in ('theocf/{}', 'docker-push.ocf.berkeley.edu/theocf/{}'):
                 new_tag = new_tag.format(tag)
                 report('Tagging {} as {} for push'.format(temp_tag, new_tag))
                 subprocess.check_call((
