@@ -99,7 +99,7 @@ if __name__ == '__main__':
                 new_tag = new_tag.format(tag)
                 report('Tagging {} as {} for push'.format(temp_tag, new_tag))
                 subprocess.check_call((
-                    'docker', 'tag', '-f', temp_tag, new_tag,
+                    'docker', 'tag', temp_tag, new_tag,
                 ))
                 subprocess.check_call((
                     'docker', 'push', new_tag,
