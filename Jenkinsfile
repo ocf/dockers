@@ -1,3 +1,10 @@
+properties(
+    [
+        # Build fresh base images every day at 2am
+        pipelineTriggers([cron('* 2 * * *')]),
+    ]
+)
+
 // check out code
 stage name: 'check-out-code'
 
