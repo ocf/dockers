@@ -19,7 +19,7 @@ RUN curl -sLo /tmp/dumb-init.deb \
     && dpkg -i /tmp/dumb-init.deb \
     && rm /tmp/dumb-init.deb \
     && apt-get clean
-ENTRYPOINT ["/usr/bin/dumb-init", "-c", "--"]
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 {% endif %}
 
 {% if ocf_apt_repo_dist %}
