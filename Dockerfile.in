@@ -45,6 +45,10 @@ COPY krb5.conf /etc/
 COPY ssmtp.conf /etc/ssmtp/
 {% endif %}
 
+RUN echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen
+RUN /usr/sbin/locale-gen
+ENV LANG en_US.UTF-8
+
 COPY incommon-intermediate.crt /etc/ssl/certs/
 
 CMD ["/bin/bash"]

@@ -26,6 +26,7 @@ DEFAULT_IMAGE_OPTIONS = {
         'htop',
         'less',
         'libnss-ldap',
+        'locales',
         'net-tools',
         'ssmtp',
         'sudo',
