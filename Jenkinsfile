@@ -1,7 +1,7 @@
 properties(
     [
         // Build fresh base images every day at 2am
-        pipelineTriggers([cron('* 2 * * *')]),
+        pipelineTriggers([cron('0 2 * * *')]),
     ]
 )
 
