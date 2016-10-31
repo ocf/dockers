@@ -22,6 +22,7 @@ DEFAULT_IMAGE_OPTIONS = {
     'packages': {
         'ca-certificates',
         'curl',
+        'gnupg',
         'heimdal-clients',
         'htop',
         'less',
