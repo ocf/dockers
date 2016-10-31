@@ -44,6 +44,7 @@ IMAGES = {
     },
     'debian:stretch': {
         'base': 'debian:stretch',
+        'ocf_apt_repo_dist': 'stretch',
     },
     'debian:sid': {
         'base': 'debian:sid',
