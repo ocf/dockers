@@ -45,9 +45,15 @@ COPY krb5.conf /etc/
 COPY ssmtp.conf /etc/ssmtp/
 {% endif %}
 
+# Set locale
 RUN echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen
 RUN /usr/sbin/locale-gen
 ENV LANG en_US.UTF-8
+
+# Set timezone through a workaround
+# https://bugs.launchpad.net/ubuntu/+source/tzdata/+bug/1554806
+RUN ln -fs /usr/share/zoneinfo/US/Pacific /etc/localtime
+RUN dpkg-reconfigure -f noninteractive tzdata
 
 COPY incommon-intermediate.crt /etc/ssl/certs/
 
