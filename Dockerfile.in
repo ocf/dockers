@@ -35,6 +35,8 @@ RUN sed 's/^deb /deb-src /' /etc/apt/sources.list >> /etc/apt/sources.list
 {% if ldap %}
 COPY libnss-ldap.conf /etc/
 COPY nsswitch.conf /etc/
+COPY ldap.conf /etc/
+RUN ln -fs /etc/ldap.conf /etc/ldap/ldap.conf
 {% endif %}
 
 {% if kerberos %}
