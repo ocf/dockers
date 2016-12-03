@@ -47,6 +47,13 @@ COPY krb5.conf /etc/
 COPY ssmtp.conf /etc/ssmtp/
 {% endif %}
 
+RUN mkdir /opt/share
+
+{% if utils %}
+RUN mkdir /opt/share/utils
+RUN curl -sL https://github.com/ocf/utils/archive/master.tar.gz | tar -C /opt/share/utils --strip-components=1 -xzf-
+{% endif %}
+
 # Set locale
 RUN echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen
 RUN /usr/sbin/locale-gen

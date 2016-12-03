@@ -39,6 +39,7 @@ DEFAULT_IMAGE_OPTIONS = {
     'ldap': True,
     'kerberos': True,
     'mail': True,
+    'utils': True,
 }
 
 IMAGES = {
