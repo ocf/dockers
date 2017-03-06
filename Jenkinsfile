@@ -1,17 +1,15 @@
 if (env.BRANCH_NAME == 'master') {
     properties([
         pipelineTriggers([
-            triggers: [
-                [
-                    $class: 'ReverseBuildTrigger',
-                    upstreamProjects: 'utils/master', threshold: hudson.model.Result.SUCCESS,
-                ],
-                [
-                    // Build fresh base images at least every day (if not already built that day).
-                    $class: 'PeriodicFolderTrigger',
-                    interval: '1d',
-                ],
-            ],
+            upstream(
+                upstreamProjects: 'utils/master',
+                threshold: hudson.model.Result.SUCCESS,
+            ),
+            // Build fresh base images every day at 9 PM.
+            // The time of day doesn't really matter on this, but when it builds
+            // successfully it triggers other builds which could have failures,
+            // so this should probably be during a time when people are awake.
+            cron('0 21 * * *'),
         ]),
     ])
 }
