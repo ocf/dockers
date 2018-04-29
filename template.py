@@ -32,6 +32,8 @@ DEFAULT_IMAGE_OPTIONS = {
         'libsasl2-modules-gssapi-mit',
         'locales',
         'net-tools',
+        'man-db',
+        'manpages',
         'procps',
         'ssmtp',
         'sudo',
