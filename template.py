@@ -18,7 +18,7 @@ def report(line, color=bg_yellow):
 
 
 DEFAULT_IMAGE_OPTIONS = {
-    'dumb_init_version': '1.2.0',
+    'dumb_init_version': '1.2.1',
     'packages': {
         'ca-certificates',
         'curl',
