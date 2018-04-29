@@ -47,10 +47,12 @@ IMAGES = {
     'debian:jessie': {
         'base': 'debian:jessie',
         'ocf_apt_repo_dist': 'jessie',
+        'backport_dist': 'jessie-backports',
     },
     'debian:stretch': {
         'base': 'debian:stretch',
         'ocf_apt_repo_dist': 'stretch',
+        'backport_dist': 'stretch-backports',
     },
     'debian:sid': {
         'base': 'debian:sid',

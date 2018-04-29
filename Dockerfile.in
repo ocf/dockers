@@ -5,6 +5,34 @@ RUN sed -ri 's!(httpredir|deb)\.debian\.org!mirrors.ocf.berkeley.edu!g; \
         s!security\.debian\.org!mirrors.ocf.berkeley.edu!g' \
         /etc/apt/sources.list
 
+# Install a few packages so that the OCF apt key can be added and so that any
+# pre-package installation commands work
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
+    ca-certificates curl gnupg
+
+
+{% if ocf_apt_repo_dist %}
+# add ocf apt repo
+RUN curl https://apt.ocf.berkeley.edu/pubkey.gpg | apt-key add - && \
+    echo 'deb http://apt.ocf.berkeley.edu/ {{ocf_apt_repo_dist}} main' \
+      >> /etc/apt/sources.list
+{% endif %}
+
+{% if backport_dist %}
+COPY backports.pref /etc/apt/preferences.d
+RUN echo 'deb http://mirrors.ocf.berkeley.edu/debian/ {{backport_dist}} main' \
+      >> /etc/apt/sources.list
+{% if ocf_apt_repo_dist %}
+RUN echo 'deb http://apt.ocf.berkeley.edu/ {{backport_dist}} main' \
+      >> /etc/apt/sources.list
+{% endif %}
+{% endif %}
+
+# add deb-src entries
+RUN sed 's/^deb /deb-src /' /etc/apt/sources.list >> /etc/apt/sources.list
+
+# Run package installation after all apt repos have been added
 {% if packages %}
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y \
@@ -21,16 +49,6 @@ RUN curl -sLo /tmp/dumb-init.deb \
     && apt-get clean
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 {% endif %}
-
-{% if ocf_apt_repo_dist %}
-# add ocf apt repo
-RUN curl https://apt.ocf.berkeley.edu/pubkey.gpg | apt-key add - && \
-    echo 'deb http://apt.ocf.berkeley.edu/ {{ocf_apt_repo_dist}} main' \
-      >> /etc/apt/sources.list
-{% endif %}
-
-# add deb-src entries
-RUN sed 's/^deb /deb-src /' /etc/apt/sources.list >> /etc/apt/sources.list
 
 {% if ldap %}
 COPY libnss-ldap.conf /etc/
