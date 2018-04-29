@@ -2,7 +2,7 @@ FROM {{base}}
 
 # use mirrors.ocf.berkeley.edu
 RUN sed -ri 's!(httpredir|deb)\.debian\.org!mirrors.ocf.berkeley.edu!g; \
-        s!security\.debian\.org!mirrors.ocf.berkeley.edu/debian-security!g' \
+        s!security\.debian\.org!mirrors.ocf.berkeley.edu!g' \
         /etc/apt/sources.list
 
 {% if packages %}
