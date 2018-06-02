@@ -20,7 +20,7 @@ RUN curl https://apt.ocf.berkeley.edu/pubkey.gpg | apt-key add - && \
 {% endif %}
 
 {% if backport_dist %}
-COPY backports.pref /etc/apt/preferences.d
+COPY backports.pref /etc/apt/preferences.d/
 RUN echo 'deb http://mirrors.ocf.berkeley.edu/debian/ {{backport_dist}} main' \
       >> /etc/apt/sources.list
 {% if ocf_apt_repo_dist %}
