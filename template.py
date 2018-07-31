@@ -56,6 +56,12 @@ IMAGES = {
         'ocf_apt_repo_dist': 'stretch',
         'backport_dist': 'stretch-backports',
     },
+    'debian:buster': {
+        'base': 'debian:buster',
+        'ocf_apt_repo_dist': 'buster',
+        # TODO: Enable backports for buster once Debian releases it as a dist
+        #'backport_dist': 'buster-backports',
+    },
     'debian:sid': {
         'base': 'debian:sid',
     },

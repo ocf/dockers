@@ -13,6 +13,7 @@ You can use any of the following:
 
 * `theocf/debian:jessie` (aka `theocf/debian`)
 * `theocf/debian:stretch`
+* `theocf/debian:buster`
 * `theocf/debian:sid`
 
 If you're on the OCF, you probably want to prefix them with
