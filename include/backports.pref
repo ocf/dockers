@@ -1,4 +1,0 @@
-Explanation: apt: backports
-Package: *
-Pin: release a=stretch-backports
-Pin-Priority: 200
