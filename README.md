@@ -11,7 +11,7 @@ hosted on [Docker Hub][dockerhub] and on the OCF's internal Docker registry.
 
 You can use any of the following:
 
-* `theocf/debian:jessie` (aka `theocf/debian`)
+* `theocf/debian:jessie`
 * `theocf/debian:stretch`
 * `theocf/debian:buster`
 * `theocf/debian:sid`
@@ -19,7 +19,7 @@ You can use any of the following:
 If you're on the OCF, you probably want to prefix them with
 `docker.ocf.berkeley.edu/` in order to use our internal registry.
 
-For example, `docker run -ti docker.ocf.berkeley.edu/theocf/debian bash`.
+For example, `docker run -ti docker.ocf.berkeley.edu/theocf/debian:stretch bash`.
 
 
 ## Making changes
