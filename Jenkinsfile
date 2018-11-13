@@ -4,12 +4,13 @@ pipeline {
     upstream(
       upstreamProjects: (env.BRANCH_NAME == 'master' ? 'utils/master' : ''),
       threshold: hudson.model.Result.SUCCESS,
-    ),
+    )
+
     // Build fresh base images every day at 9 PM.
 		// The time of day doesn't really matter on this, but when it builds
 		// successfully it triggers other builds which could have failures, so this
     // should probably be during a time when people are awake.
-    cron('0 21 * * *'),
+    cron('0 21 * * *')
   }
 
   agent {
