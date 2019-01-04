@@ -11,7 +11,6 @@ hosted on [Docker Hub][dockerhub] and on the OCF's internal Docker registry.
 
 You can use any of the following:
 
-* `theocf/debian:jessie`
 * `theocf/debian:stretch`
 * `theocf/debian:buster`
 * `theocf/debian:sid`
