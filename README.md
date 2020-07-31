@@ -1,7 +1,7 @@
 Open Computing Facility Docker images
 ========
 
-[![Build Status](https://jenkins.ocf.berkeley.edu/buildStatus/icon?job=dockers/master)](https://jenkins.ocf.berkeley.edu/job/dockers/job/master/)
+[![Build Status](https://jenkins.ocf.berkeley.edu/buildStatus/icon?job=ocf/dockers/master)](https://jenkins.ocf.berkeley.edu/job/ocf/job/dockersjob/master/)
 
 This repo contains OCF-flavored Docker images. They are built automatically and
 hosted on [Docker Hub][dockerhub] and on the OCF's internal Docker registry.
