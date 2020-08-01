@@ -54,9 +54,7 @@ pipeline {
       emailNotification()
     }
     always {
-      node(label: 'slave') {
-        ircNotification()
-      }
+      ircNotification()
     }
   }
 }
