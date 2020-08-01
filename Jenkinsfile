@@ -2,7 +2,7 @@ pipeline {
   // TODO: Make this cleaner: https://issues.jenkins-ci.org/browse/JENKINS-42643
   triggers {
     upstream(
-      upstreamProjects: (env.BRANCH_NAME == 'master' ? 'utils/master' : ''),
+      upstreamProjects: (env.BRANCH_NAME == 'master' ? 'ocf/utils/master' : ''),
       threshold: hudson.model.Result.SUCCESS,
     )
 
