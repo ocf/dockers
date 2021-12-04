@@ -18,7 +18,7 @@ def report(line, color=bg_yellow):
 
 
 DEFAULT_IMAGE_OPTIONS = {
-    'dumb_init_version': '1.2.1',
+    'dumb_init_version': '1.2.5',
     'packages': {
         'ca-certificates',
         'curl',
@@ -55,6 +55,11 @@ IMAGES = {
         'base': 'debian:buster',
         'ocf_apt_repo_dist': 'buster',
         'backport_dist': 'buster-backports',
+    },
+    'debian:bullseye': {
+        'base': 'debian:bullseye',
+        'ocf_apt_repo_dist': 'bullseye',
+        'backport_dist': 'bullseye-backports',
     },
     'debian:sid': {
         'base': 'debian:sid',
