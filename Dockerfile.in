@@ -14,17 +14,17 @@ RUN sed -ri 's!http\:\/\/(httpredir|deb)\.debian\.org!https\:\/\/mirrors.ocf.ber
 {% if ocf_apt_repo_dist %}
 # add ocf apt repo
 RUN curl https://apt.ocf.berkeley.edu/pubkey.gpg | apt-key add - && \
-    echo 'deb http://apt.ocf.berkeley.edu/ {{ocf_apt_repo_dist}} main' \
+    echo 'deb https://apt.ocf.berkeley.edu/ {{ocf_apt_repo_dist}} main' \
       >> /etc/apt/sources.list
 {% endif %}
 
 {% if backport_dist %}
 RUN echo 'Package: *\nPin: release n={{backport_dist}}\nPin-Priority: 200' \
       > /etc/apt/preferences.d/backports.pref
-RUN echo 'deb http://mirrors.ocf.berkeley.edu/debian/ {{backport_dist}} main' \
+RUN echo 'deb https://mirrors.ocf.berkeley.edu/debian/ {{backport_dist}} main' \
       >> /etc/apt/sources.list
 {% if ocf_apt_repo_dist %}
-RUN echo 'deb http://apt.ocf.berkeley.edu/ {{backport_dist}} main' \
+RUN echo 'deb https://apt.ocf.berkeley.edu/ {{backport_dist}} main' \
       >> /etc/apt/sources.list
 {% endif %}
 {% endif %}
