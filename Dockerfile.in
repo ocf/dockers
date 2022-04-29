@@ -1,16 +1,15 @@
 FROM {{base}}
 
-# use mirrors.ocf.berkeley.edu
-RUN sed -ri 's!(httpredir|deb)\.debian\.org!mirrors.ocf.berkeley.edu!g; \
-        s!security\.debian\.org!mirrors.ocf.berkeley.edu!g' \
-        /etc/apt/sources.list
-
 # Install a few packages so that the OCF apt key can be added and so that any
-# pre-package installation commands work
+# pre-package installation commands work + support https mirrors
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
-    ca-certificates curl gnupg
+    ca-certificates curl gnupg apt-transport-https
 
+# use mirrors.ocf.berkeley.edu (https)
+RUN sed -ri 's!http\:\/\/(httpredir|deb)\.debian\.org!https\:\/\/mirrors.ocf.berkeley.edu!g; \
+        s!http\:\/\/security\.debian\.org!https\:\/\/mirrors.ocf.berkeley.edu!g' \
+        /etc/apt/sources.list
 
 {% if ocf_apt_repo_dist %}
 # add ocf apt repo
