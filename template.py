@@ -61,9 +61,6 @@ IMAGES = {
         'ocf_apt_repo_dist': 'bullseye',
         'backport_dist': 'bullseye-backports',
     },
-    'debian:sid': {
-        'base': 'debian:sid',
-    },
 }
 
 
