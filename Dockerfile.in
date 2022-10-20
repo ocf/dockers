@@ -4,7 +4,8 @@ FROM {{base}}
 # pre-package installation commands work + support https mirrors
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
-    ca-certificates curl gnupg apt-transport-https
+        ca-certificates curl gnupg apt-transport-https \
+    && rm -rf /var/lib/apt/lists/*
 
 # use mirrors.ocf.berkeley.edu (https)
 RUN sed -ri 's!http\:\/\/(httpredir|deb)\.debian\.org!https\:\/\/mirrors.ocf.berkeley.edu!g; \
