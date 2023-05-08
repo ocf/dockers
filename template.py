@@ -46,11 +46,6 @@ DEFAULT_IMAGE_OPTIONS = {
 }
 
 IMAGES = {
-    'debian:stretch': {
-        'base': 'debian:stretch',
-        'ocf_apt_repo_dist': 'stretch',
-        'backport_dist': 'stretch-backports',
-    },
     'debian:buster': {
         'base': 'debian:buster',
         'ocf_apt_repo_dist': 'buster',
@@ -61,6 +56,11 @@ IMAGES = {
         'ocf_apt_repo_dist': 'bullseye',
         'backport_dist': 'bullseye-backports',
     },
+    'debian:bullseye-py': {
+        'base': 'python:3.7-bullseye',
+        'ocf_apt_repo_dist': 'bullseye',
+        'backport_dist': 'bullseye-backports',
+    }
 }
 
 
