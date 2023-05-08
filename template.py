@@ -46,11 +46,6 @@ DEFAULT_IMAGE_OPTIONS = {
 }
 
 IMAGES = {
-    'debian:stretch': {
-        'base': 'debian:stretch',
-        'ocf_apt_repo_dist': 'stretch',
-        'backport_dist': 'stretch-backports',
-    },
     'debian:buster': {
         'base': 'debian:buster',
         'ocf_apt_repo_dist': 'buster',
