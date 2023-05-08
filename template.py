@@ -57,7 +57,7 @@ IMAGES = {
         'backport_dist': 'bullseye-backports',
     },
     'debian:bullseye-py': {
-        'base': 'python:3.7-bullseye-slim',
+        'base': 'python:3.7-slim-bullseye',
         'ocf_apt_repo_dist': 'bullseye',
         'backport_dist': 'bullseye-backports',
     }
