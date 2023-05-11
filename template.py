@@ -60,7 +60,12 @@ IMAGES = {
         'base': 'python:3.7-slim-bullseye',
         'ocf_apt_repo_dist': 'bullseye',
         'backport_dist': 'bullseye-backports',
-    }
+    },
+    'debian:bookworm': {
+        'base': 'debian:bookworm',
+        'ocf_apt_repo_dist': 'bullseye',
+        'backport_dist': 'bookworm-backports',
+    },
 }
 
 
