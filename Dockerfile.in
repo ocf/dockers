@@ -7,10 +7,16 @@ RUN apt-get update \
         ca-certificates curl gnupg apt-transport-https \
     && rm -rf /var/lib/apt/lists/*
 
+{% if base != 'debian:bookworm' %}
 # use mirrors.ocf.berkeley.edu (https)
 RUN sed -ri 's!http\:\/\/(httpredir|deb)\.debian\.org!https\:\/\/mirrors.ocf.berkeley.edu!g; \
         s!http\:\/\/security\.debian\.org!https\:\/\/mirrors.ocf.berkeley.edu!g' \
         /etc/apt/sources.list
+{% else %}
+RUN sed -ri 's!http\:\/\/(httpredir|deb)\.debian\.org!https\:\/\/mirrors.ocf.berkeley.edu!g; \
+        s!http\:\/\/security\.debian\.org!https\:\/\/mirrors.ocf.berkeley.edu!g' \
+        /etc/apt/sources.list.d/debian.sources
+{% endif %}
 
 {% if ocf_apt_repo_dist %}
 # add ocf apt repo
