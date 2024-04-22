@@ -46,10 +46,6 @@ DEFAULT_IMAGE_OPTIONS = {
 }
 
 IMAGES = {
-    'debian:buster': {
-        'base': 'debian:buster',
-        'ocf_apt_repo_dist': 'buster',
-    },
     'debian:bullseye': {
         'base': 'debian:bullseye',
         'ocf_apt_repo_dist': 'bullseye',
