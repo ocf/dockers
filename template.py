@@ -49,7 +49,6 @@ IMAGES = {
     'debian:buster': {
         'base': 'debian:buster',
         'ocf_apt_repo_dist': 'buster',
-        'backport_dist': 'buster-backports',
     },
     'debian:bullseye': {
         'base': 'debian:bullseye',
@@ -63,7 +62,7 @@ IMAGES = {
     },
     'debian:bookworm': {
         'base': 'debian:bookworm',
-        'ocf_apt_repo_dist': 'bullseye',
+        'ocf_apt_repo_dist': 'bookworm',
         'backport_dist': 'bookworm-backports',
     },
 }
