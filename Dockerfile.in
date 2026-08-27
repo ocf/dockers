@@ -63,6 +63,7 @@ COPY libnss-ldap.conf /etc/
 COPY nsswitch.conf /etc/
 COPY ldap.conf /etc/
 RUN mkdir -p /etc/ldap/ && ln -fs /etc/ldap.conf /etc/ldap/ldap.conf
+RUN groupadd ocf -g 1000
 {% endif %}
 
 {% if kerberos %}
